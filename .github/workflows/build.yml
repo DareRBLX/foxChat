@@ -18,7 +18,7 @@ jobs:
       #- run: cargo install rojo
       #- run: rojo -V
       - run: wget https://github.com/rojo-rbx/rojo/releases/download/v7.4.4/rojo-7.4.4-linux-x86_64.zip
-      - run: unzip rojo-7.4.4-linux.zip
+      - run: unzip rojo-7.4.4-linux-x86_64.zip
       - run: chmod +x rojo
       - run: ./rojo -V
 
