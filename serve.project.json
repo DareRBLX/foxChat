@@ -1,0 +1,25 @@
+{
+	"name": "🦊💬",
+	"globIgnorePaths": [
+		"**/package.json",
+		"**/tsconfig.json"
+	],
+	"tree": {
+		"$className": "DataModel",
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+				"foxChat": {
+					"$path": "out",
+					"include": {
+						"$path": "include",
+						"node_modules": {
+							"$className": "Folder",
+							"@rbxts": {
+									"$path": "node_modules/@rbxts"
+							}
+						}
+					}
+				}
+		}		
+	}
+}

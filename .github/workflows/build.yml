@@ -1,0 +1,39 @@
+name: build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '23'
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      
+      # holy shit why does rojo have so many dependencies (320!!!!) it takes forever to install
+      # cargo the new node_modules?
+      #- run: sudo apt install libssl-dev
+      #- run: cargo install rojo
+      #- run: rojo -V
+      - run: wget https://github.com/rojo-rbx/rojo/releases/download/v7.4.4/rojo-7.4.4-linux-x86_64.zip
+      - run: unzip rojo-7.4.4-linux.zip
+      - run: chmod +x rojo
+      - run: ./rojo -V
+
+      - run: npm install -g roblox-ts
+      - run: rbxtsc -v
+
+      - run: npm i
+      
+
+      - run: rbxtsc --rojo build.project.json
+      
+      - run: ./rojo build --output foxchat.rbxm build.project.json
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: foxchat.rbxm
+          path: foxchat.rbxm
+
